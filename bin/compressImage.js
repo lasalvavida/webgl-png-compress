@@ -6,7 +6,7 @@ import compress from '../lib/compress'
 import condensePalette from '../lib/condensePalette'
 import writePNG from '../lib/writePNG'
 
-loadImage('test/images/Lenna.png').then((image) => {
+loadImage('test/images/Lenna.jpg').then((image) => {
 	var width = image.width
 	var height = image.height
 	const n = 255
