@@ -1,5 +1,5 @@
 # webgl-png-compress
-ES6 module to use WebGL for fast PNG quantization
+ES6 module for fast PNG quantization with WebGL
 
 `npm install webgl-png-compress`
 
