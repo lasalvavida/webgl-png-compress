@@ -31,7 +31,7 @@ Returns the reduced palette.
 
 ### Write PNG
 ```javascript
-writePNG (pixelData, palette, width, height)
+function writePNG (pixelData, palette, width, height)
 ```
 
 Creates a buffer containing a quantized PNG with a `PLTE` block from the original `pixelData` with
