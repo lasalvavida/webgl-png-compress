@@ -1,0 +1,37 @@
+{
+  "name": "webgl-png-compress",
+  "version": "1.0.0",
+  "description": "Use WebGL for fast PNG quantization in the browser",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint lib test",
+    "test": "mocha --require babel-core/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lasalvavida/webgl-png-compress.git"
+  },
+  "keywords": [
+    "webgl",
+    "png",
+    "compress"
+  ],
+  "author": "Rob Taglang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lasalvavida/webgl-png-compress/issues"
+  },
+  "homepage": "https://github.com/lasalvavida/webgl-png-compress#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.3",
+    "babel-preset-es2015": "^6.24.1",
+    "canvas": "^2.0.0-alpha.12",
+    "eslint": "^4.19.1",
+    "gl": "^4.0.4",
+    "mocha": "^5.1.0"
+  },
+  "dependencies": {
+    "crc": "^3.5.0"
+  }
+}
