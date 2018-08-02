@@ -1,6 +1,6 @@
 {
   "name": "webgl-png-compress",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Use WebGL for fast PNG quantization in the browser",
   "main": "index.js",
   "scripts": {

@@ -1,3 +1,9 @@
-export {default as compress} from './lib/compress';
-export {default as condensePalette} from './lib/condensePalette'
-export {default as writePNG} from './lib/writePNG'
+import compress from './lib/compress'
+import condensePalette from './lib/condensePalette'
+import writePNG from './lib/writePNG'
+
+export {
+  compress,
+  condensePalette,
+  writePNG
+}
