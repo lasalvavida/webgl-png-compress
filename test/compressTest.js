@@ -11,11 +11,15 @@ describe('compress', () => {
             var height = image.height
 
             var canvas2d = createCanvas(width, height)
+            const context = canvas2d.getContext('2d')
+            context.drawImage(image, 0, 0)
+            const imageData = context.getImageData(0, 0, width, height)
+
             var glContext = gl(width, height, {
                 preserveDrawingBuffer: true
             })
-            var palette = compress(image, canvas2d, glContext, 64, 8)
-            condensePalette(palette)
+            let palette = compress(imageData, width, height, glContext, 256, 4)
+            palette = condensePalette(palette)
         })
     })
 })

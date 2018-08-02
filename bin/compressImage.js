@@ -7,24 +7,28 @@ import condensePalette from '../lib/condensePalette'
 import writePNG from '../lib/writePNG'
 
 loadImage('test/images/Lenna.jpg').then((image) => {
-	var width = image.width
-	var height = image.height
+	const width = image.width
+	const height = image.height
 	const n = 255
 
-	var canvas2d = createCanvas(width, height)
-	var glContext = gl(width, height, {
+	const canvas2d = createCanvas(width, height)
+	const context = canvas2d.getContext('2d')
+	context.drawImage(image, 0, 0)
+	const imageData = context.getImageData(0, 0, width, height)
+
+	const glContext = gl(width, height, {
 		preserveDrawingBuffer: true
 	})
 	console.log("Computing palette with " + n + " colors...")
-	var data = compress(image, canvas2d, glContext, n, 4)
+	let palette = compress(imageData, width, height, glContext, n, 4)
 	console.log("Done computing palette!")
 
 	console.log("Condensing palette...")
-	var palette = condensePalette(data.palette)
+	palette = condensePalette(palette)
 	console.log("Condensed palette from " + n + " colors to " + palette.length + " colors.")
 
     console.log("Writing PNG...")
-	var imageBuffer = writePNG(data.pixelData, palette, width, height)
+	var imageBuffer = writePNG(imageData, palette, width, height)
 	console.log("Done writing PNG!")
     fs.writeFile('out.png', imageBuffer, (err) => {
         if (err) {
