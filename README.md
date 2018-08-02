@@ -46,6 +46,22 @@ Creates a buffer containing a quantized PNG with a `PLTE` block from the origina
 
 Returns the buffer.
 
+## How does it work?
+
+PNGs are capable of displaying palettized images by declaring a `PLTE` chunk. See the [specification](http://www.libpng.org/pub/png/spec/1.2/PNG-Chunks.html) for more details.
+
+Once a palette chunk is declared, the image data can be made up of 8-bit indices that reference colors in the palette, as opposed to each pixel declared independently as a 24-bit color. Palette based compression will always reduced the image size by `~30%` when compared to uncompressed PNG images.
+
+However, the real gain from this type of compression comes from the fact the PNG data chunk is compressed with [Deflate](https://www.w3.org/TR/PNG-Compression.html) (a LZ77 based compression).
+
+Replacing colors with indices makes the data much more compressible, particularly in vector images that may have long linear stretches of repeated colors. 
+
+This project uses k-means to generate an optimized palette from a source image, and that palette (or any other palette) can be used to write out a new, compressed image.
+
+:warning: **WARNING** :warning:
+
+`You can compress any image loadable in the browser (including JPG), but for certain types of images (particularly photographs), the PNG compression may not perform as well as the compression that has likely already been applied to the JPG.`
+
 ## How does it use WebGL?
 
 Each pixel is treated as a vertex with a shader. The shader is used to map the pixel to the closest cluster center.
